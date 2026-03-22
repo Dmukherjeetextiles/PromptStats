@@ -1,0 +1,64 @@
+{
+  "manifest_version": 3,
+  "name": "PromptStats",
+  "version": "2.0.0",
+  "description": "Privacy-first prompt analytics & sustainability tracker for LLM platforms.",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://gemini.google.com/*",
+    "https://claude.ai/*",
+    "https://aistudio.google.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://gemini.google.com/*",
+        "https://claude.ai/*",
+        "https://aistudio.google.com/*"
+      ],
+      "js": [
+        "src/content/utils/time.js",
+        "src/content/utils/dom.js",
+        "src/content/utils/crypto.js",
+        "src/content/utils/observer.js",
+        "src/content/engines/token-estimator.js",
+        "src/content/engines/environment-engine.js",
+        "src/content/engines/frequency-engine.js",
+        "src/content/engines/pii-detector.js",
+        "src/content/services/supabase.js",
+        "src/content/services/ga4.js",
+        "src/content/adapters/base-adapter.js",
+        "src/content/adapters/chatgpt-adapter.js",
+        "src/content/adapters/gemini-adapter.js",
+        "src/content/adapters/claude-adapter.js",
+        "src/content/adapters/aistudio-adapter.js",
+        "src/content/capture/file-capture.js",
+        "src/content/capture/prompt-capture.js",
+        "src/content/ui/dashboard.js",
+        "src/content/index.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Toggle PromptStats",
+    "default_icon": { "128": "assets/logo128.png" }
+  },
+  "icons": { "128": "assets/logo128.png" },
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/logo.svg", "assets/logo128.png"],
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://gemini.google.com/*",
+        "https://claude.ai/*",
+        "https://aistudio.google.com/*"
+      ]
+    }
+  ]
+}
