@@ -157,12 +157,7 @@ window.PromptStatsDashboard = (() => {
 
       
 
-      <div id="ps-footer" aria-label="Cumulative totals">
-        <div class="ps-total-item"><span class="ps-total-num" id="ps-total-prompts">0</span>Prompts</div>
-        <div class="ps-total-item"><span class="ps-total-num" id="ps-total-energy">0</span>Energy</div>
-        <div class="ps-total-item"><span class="ps-total-num" id="ps-total-co2">0g</span>CO₂</div>
-        <div class="ps-total-item"><span class="ps-total-num" id="ps-total-water">0mL</span>Water</div>
-      </div>
+      
 
       <div id="ps-settings" role="region" aria-label="Settings">
         <div class="ps-setting-row">
